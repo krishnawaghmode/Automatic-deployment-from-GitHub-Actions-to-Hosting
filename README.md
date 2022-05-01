@@ -1,8 +1,8 @@
-# Automatic Deployment from GitHub Actions To Hosting Server (PHP ,Laravel ,VueJs & NuxtJs Websites)
+# Automatic Deployment from GitHub Actions To Hosting Server (PHP,Laravel,NuxtJs Websites deploy)
 
 <img src="https://raw.githubusercontent.com/krishnawaghmode/attendance_task/main/screenshots/Screenshot1.png" width="800">
 
-## Setup PHP Website in GitHub Actions
+## PHP Website in GitHub Actions
 ### cPanelDepolyment.yml
 ```bash
 name: sms reminder system
@@ -25,7 +25,7 @@ jobs:
         ftp-username: ${{ secrets.FTP_USERNAME }}
         ftp-password: ${{ secrets.FTP_PASSWORD }}
 ```
-## Setup Laravel Website in GitHub Actions
+## Laravel Website in GitHub Actions
 ### LaravelDepolyment.yml
 ```bash
 on: push
@@ -57,5 +57,37 @@ jobs:
         host: ${{ secrets.FTP_SERVER }}
         user: ${{ secrets.FTP_USERNAME }}
         password: ${{ secrets.FTP_PASSWORD }}
+```
+## NuxtJs Website in GitHub Actions
+### NuxtJs.yml
+```bash
+on: push
+name: 🚀 Deploy website on push
+jobs:
+  web-deploy:
+    name: 🎉 Deploy
+    runs-on: ubuntu-latest
+    steps:
+    - name: 🚚 Get latest code
+      uses: actions/checkout@v2
+
+    - name: Use Node.js 14
+      uses: actions/setup-node@v2
+      with:
+        node-version: '14'
+      
+    - name: 🔨 Build Project
+      run: |
+        npm install
+        npm run generate
+    
+    - name: 📂 Sync files
+        #uses: SamKirkland/FTP-Deploy-Action@4.2.0
+      uses: sebastianpopp/ftp-action@releases/v2
+      with:
+        host: ${{ secrets.FTP_SERVER }}
+        user: ${{ secrets.FTP_USERNAME }}
+        password: ${{ secrets.FTP_PASSWORD }}
+        localDir: ./dist/ 
 ```
 
