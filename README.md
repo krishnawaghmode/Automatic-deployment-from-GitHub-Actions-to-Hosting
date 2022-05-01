@@ -1,6 +1,6 @@
 # Automatic Deployment from GitHub Actions To Hosting Server (PHP,Laravel,NuxtJs Websites deploy)
 
-<img src="https://raw.githubusercontent.com/krishnawaghmode/attendance_task/main/screenshots/Screenshot1.png" width="800">
+<!-- <img src="https://raw.githubusercontent.com/krishnawaghmode/attendance_task/main/screenshots/Screenshot1.png" width="800"> -->
 
 ## PHP Website in GitHub Actions
 ### cPanelDepolyment.yml
